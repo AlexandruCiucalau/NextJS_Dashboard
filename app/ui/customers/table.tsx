@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
 import {
   CustomersTableType,
   FormattedCustomersTable,
@@ -11,12 +9,25 @@ export default async function CustomersTable({
 }: {
   customers: FormattedCustomersTable[];
 }) {
+  if (customers.length === 0) {
+  return (
+    <div
+      role="status"
+      className="mt-6 rounded-md bg-gray-50
+                 px-6 py-12 text-center"
+    >
+      <p className="font-medium text-gray-900">
+        No customers found
+      </p>
+
+      <p className="mt-2 text-sm text-gray-500">
+        Try searching with a different name or email address.
+      </p>
+    </div>
+  );
+}
   return (
     <div className="w-full">
-      <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
-        Customers
-      </h1>
-      <Search placeholder="Search customers..." />
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">

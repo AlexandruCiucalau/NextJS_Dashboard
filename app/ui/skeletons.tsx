@@ -216,3 +216,41 @@ export function InvoicesTableSkeleton() {
     </div>
   );
 }
+
+export function CustomersTableSkeleton() {
+  return (
+    <div
+      role="status"
+      className="mt-6 animate-pulse rounded-lg bg-gray-50 p-2"
+    >
+      <span className="sr-only">Loading customers...</span>
+
+      <div className="mb-2 hidden grid-cols-5 gap-4 p-4 md:grid">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div
+            key={index}
+            className="h-4 w-20 rounded bg-gray-200"
+          />
+        ))}
+      </div>
+
+      {Array.from({ length: 6 }).map((_, index) => (
+        <div
+          key={index}
+          className="mb-2 grid grid-cols-2 items-center
+                     gap-4 rounded-md bg-white p-4 md:grid-cols-5"
+        >
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 shrink-0 rounded-full bg-gray-200" />
+            <div className="h-4 w-20 rounded bg-gray-200" />
+          </div>
+
+          <div className="h-4 w-full max-w-32 rounded bg-gray-200" />
+          <div className="h-4 w-10 rounded bg-gray-200" />
+          <div className="h-4 w-16 rounded bg-gray-200" />
+          <div className="h-4 w-16 rounded bg-gray-200" />
+        </div>
+      ))}
+    </div>
+  );
+}
